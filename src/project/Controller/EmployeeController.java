@@ -1,45 +1,42 @@
 package project.Controller;
 
 import project.Model.Employee;
+import project.Model.EmployeeDAO;
 import project.View.EmployeeView;
 
+import java.util.List;
+
 public class EmployeeController {
-    private Employee model;
+    private EmployeeDAO dao;
     private EmployeeView view;
 
-    // constructor to initialize
-    public EmployeeController(Employee model, EmployeeView view) {
-        this.model = model;
+    public EmployeeController(EmployeeDAO dao, EmployeeView view) {
+        this.dao = dao;
         this.view = view;
     }
 
-    // getter and setter methods
-    public void setEmployeeName(String name){
-        model.setName(name);
+    public void createEmployee(String name, String id, String department) {
+        Employee employee = new Employee(name, id, department);
+        dao.addEmployee(employee);
     }
 
-    public String getEmployeeName(){
-        return model.getName();
+    public Employee getEmployeeById(String id) {
+        return dao.getEmployeeById(id);
     }
 
-    public void setEmployeeId(String id){
-        model.setId(id);
+    public void updateEmployee(Employee employee) {
+        dao.updateEmployee(employee);
     }
 
-    public String getEmployeeId(){
-        return model.getId();
+    public void deleteEmployee(String id) {
+        dao.deleteEmployee(id);
+    }
+    public List<Employee> getAllEmployees() {
+        return dao.getAllEmployees();
     }
 
-    public void setEmployeeDepartment(String Department){
-        model.setDepartment(Department);
-    }
 
-    public String getEmployeeDepartment(){
-        return model.getDepartment();
-    }
-
-    // method to update view
-    public void updateView() {
-        view.printEmployeeDetails(model.getName(), model.getId(), model.getDepartment());
+    public void displayEmployeeDetails(Employee employee) {
+        view.printEmployeeDetails(employee.getName(), employee.getId(), employee.getDepartment());
     }
 }

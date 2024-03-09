@@ -1,34 +1,39 @@
 package project.Model;
 
 public class Employee {
-    private String EmployeeName;
-    private String EmployeeId;
-    private String EmployeeDepartment;
+    private String employeeName;
+    private String employeeId;
+    private String employeeDepartment;
 
-    // defining getter and setter methods
+    // Constructor
+    public Employee(String name, String id, String department) {
+        this.employeeName = name;
+        this.employeeId = id;
+        this.employeeDepartment = department;
+    }
+
+    // Getters y Setters
     public String getId() {
-        return EmployeeId;
+        return employeeId;
     }
 
     public void setId(String id) {
-        this.EmployeeId = id;
+        this.employeeId = id;
     }
 
     public String getName() {
-        return EmployeeName;
+        return employeeName;
     }
 
     public void setName(String name) {
-        this.EmployeeName = name;
+        this.employeeName = name;
     }
 
     public String getDepartment() {
-        return EmployeeDepartment;
+        return employeeDepartment;
     }
 
-    public void setDepartment(String Department) {
-        this.EmployeeDepartment = Department;
+    public void setDepartment(String department) {
+        this.employeeDepartment = department;
     }
-
 }
-
